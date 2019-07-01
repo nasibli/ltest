@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\AuthManager;
 
 use App\Repositories\UserRepository;
+use App\Http\Requests\Api\LoginRequest;
 
 class AuthController
 {
@@ -25,7 +26,7 @@ class AuthController
      * @param UserRepository $userRepository
      * @return JsonResponse
      */
-    public function login (Request $request, UserRepository $userRepository)
+    public function login (LoginRequest $request, UserRepository $userRepository)
     {
         $credentials = $request->only('email', 'password');
         return new JsonResponse($this->auth->guard('web')->attempt($credentials));
