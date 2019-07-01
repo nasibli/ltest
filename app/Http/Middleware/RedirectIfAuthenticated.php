@@ -4,21 +4,22 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class RedirectIfAuthenticated
 {
     /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
+     * Перенаправляем авторизованного пользователя на страницу приложения, если он зашел на страницу входа в систему
+     * @param Request $request
+     * @param Closure $next
+     * @return \Illuminate\Routing\Route|mixed|object|string
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+        if (Auth::guard()->check()) {
+            if ($request->route()->getName() == 'login') {
+                return redirect()->route('app');
+            }
         }
 
         return $next($request);
