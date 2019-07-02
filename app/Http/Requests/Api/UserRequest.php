@@ -4,10 +4,11 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class UserRequest extends FormRequest
 {
+
     /**
-     * Авторизация для работы с ресурсом (не нужна)
+     * Авторизация для работы с ресурсом "User"
      *
      * @return bool
      */
@@ -23,9 +24,14 @@ class LoginRequest extends FormRequest
      */
     public function rules() : array
     {
-        return [
-            'email'    => 'required|email',
-            'password' => 'required'
+        $id = $this->input('id');
+        $rules = [
+            'email' => 'required|unique:users,email' . ($id ? ',' . $id : '')
         ];
+        if (! $id) {
+            $rules['password'] = 'required';
+        }
+        return $rules;
     }
+
 }

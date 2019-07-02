@@ -26,7 +26,7 @@ class AuthController
      * @param UserRepository $userRepository
      * @return JsonResponse
      */
-    public function login (LoginRequest $request, UserRepository $userRepository)
+    public function login (LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
         return new JsonResponse($this->auth->guard('web')->attempt($credentials));
@@ -41,6 +41,17 @@ class AuthController
     {
         $this->auth->guard()->logout();
         return  new JsonResponse(true);
+    }
+
+    /**
+     * Теущий пользователь системы
+     *
+     * @param UserRepository $userRepository
+     * @return \App\Models\User
+     */
+    public function user(UserRepository $userRepository)
+    {
+        return $userRepository->getById($this->auth->guard()->id());
     }
 
 }
