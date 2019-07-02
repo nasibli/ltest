@@ -10,10 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public $timestamps = false;
-
     /**
-     * Конвертируем даты в php
+     * Конвертация даты в php datetime
      *
      * @var array
      */
