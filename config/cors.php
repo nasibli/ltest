@@ -13,7 +13,7 @@ return [
     */
    
     'supportsCredentials' => true,
-    'allowedOrigins' => ['http://ltest.local', 'http://api.ltest.loca'],
+    'allowedOrigins' => ['http://ltest.local', 'http://api.ltest.local'],
     'allowedOriginsPatterns' => [],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],

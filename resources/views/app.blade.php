@@ -42,7 +42,7 @@
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" charset="utf-8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js" charset="utf-8"></script>
-        <script src="https://unpkg.com/vuetable-2@1.6.0"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vuetable-2@1.7.5/dist/vuetable-2-full.js"></script>
         <script type="text/javascript" src="/app.js"></script>
     </body>
 </html>

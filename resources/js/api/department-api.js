@@ -1,20 +1,14 @@
-import axios from 'axios'
-import config from '../config';
+import api from './base-api.js';
 
-function DepartmentApi(endpoint) {
-
-    return {
-        get: get,
-        save: save,
-        remove: remove,
-    };
-
-    function get(id) {
-        return axios.get(endpoint + '/departments/' + id, {withCredentials:true});
-    }
-
-    function save(department, users, id, file) {
-        let url = endpoint + '/departments' + (id ? '/' + id : '');
+export default {
+    get(id) {
+        return api.get('/departments/' + id);
+    },
+    getPaginated(apiUrl, httpOptions) {
+        return api.get(apiUrl, httpOptions);
+    },
+    save(department, users, id, file) {
+        let url = '/departments' + (id ? '/' + id : '');
 
         let formData = new FormData();
 
@@ -22,21 +16,18 @@ function DepartmentApi(endpoint) {
         formData.append('department', JSON.stringify(department));
         formData.append('users', JSON.stringify(users));
 
-        return axios.post(
+        return api.post(
             url,
             formData,
             {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
-                withCredentials:true
             }
         );
-    }
-
-    function remove(id) {1
-        return axios.delete(endpoint + '/departments/' + id, {withCredentials:true});
+    },
+    remove(id) {1
+        return api.delete('/departments/' + id);
     }
 }
 
-export default new DepartmentApi(config.endpoint);

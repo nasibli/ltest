@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Регистрация сервисов, которые Service Container автоматически загрузить не может
      *
      * @return void
      */
@@ -17,12 +17,12 @@ class AppServiceProvider extends ServiceProvider
             return new \App\Services\DepartmentsService(
                 $app->get('App\Repositories\DepartmentRepository'),
                 $app->get('App\Repositories\UserDepartmentRepository'),
-                base_path() . '/' . config('app.logo_path')
+                base_path(base_path('/' . config('app.logo_path')))
             );
         });
 
         $this->app->bind('DepartmentsTableSeeder', function () {
-            return new \DepartmentsTableSeeder(base_path() . '/' . config('app.logo_path'));
+            return new \DepartmentsTableSeeder(base_path('/' . config('app.logo_path')));
         });
     }
 

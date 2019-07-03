@@ -8,6 +8,7 @@
             <br />
             <vuetable ref="vuetable"
                       v-bind:api-url="endpoint"
+                      :http-fetch = "getData"
                       :per-page="6"
                       :fields="fields"
                       pagination-path=""
@@ -65,7 +66,7 @@
     export default {
         data () {
             return {
-                endpoint: config.endpoint + '/departments?page=1&per_page=5',
+                endpoint: config.endpoint + '/departments?page=1',
                 deleteDepartment: {},
                 fields: [
                     {
@@ -131,6 +132,9 @@
                 }
 
                 return pagination;
+            },
+            getData (apiUrl, httpOptions) {
+                return departmentApi.getPaginated(apiUrl, httpOptions);
             },
             onPaginationData (paginationData) {
                 this.$refs.pagination.setPaginationData(paginationData)

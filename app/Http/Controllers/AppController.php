@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\Factory as ViewFactory;
 class AppController
 {
     /**
-     * @var View
+     * @var ViewFactory
      */
     private $view;
 

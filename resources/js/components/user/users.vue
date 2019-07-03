@@ -8,6 +8,7 @@
             <br />
             <vuetable ref="vuetable"
                       v-bind:api-url="endpoint"
+                      :http-fetch = "getData"
                       :fields="fields"
                       :per-page="6"
                       pagination-path=""
@@ -103,6 +104,9 @@
                         this.$refs.vuetable.reload();
                     }
                 });
+            },
+            getData (apiUrl, httpOptions) {
+                return userApi.getPaginated(apiUrl, httpOptions);
             },
             onPaginationData (paginationData) {
                 this.$refs.pagination.setPaginationData(paginationData)

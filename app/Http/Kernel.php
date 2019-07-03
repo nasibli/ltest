@@ -28,6 +28,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -51,7 +52,6 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth'       => \App\Http\Middleware\Authenticate::class,
-        'authorized' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'json-parse' => \App\Http\Middleware\JsonParse::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

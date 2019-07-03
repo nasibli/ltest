@@ -54,7 +54,7 @@ class UsersController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, ?int $id=null)
+    public function update(UserRequest $request, ?int $id=null) : JsonResponse
     {
         $this->repository->update($request->all(), $id);
         return new JsonResponse(true);
@@ -66,7 +66,7 @@ class UsersController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(int $id)
+    public function delete(int $id) : JsonResponse
     {
         $this->repository->delete($id);
         return new JsonResponse(true);

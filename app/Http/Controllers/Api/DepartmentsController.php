@@ -25,7 +25,7 @@ class DepartmentsController
      * @param Request $request
      * @return mixed|null|object
      */
-    public function index(Request $request)
+    public function index(Request $request) : ?object
     {
         return $this->service->getPaginated($request->get('per_page'));
     }
@@ -45,11 +45,11 @@ class DepartmentsController
     /**
      * Создание нового или удаление существующего отдела с учетом пользователей
      *
-     * @param Request $request
+     * @param DepartmentRequest $request
      * @param int|null $id
      * @return JsonResponse
      */
-    public function update(DepartmentRequest $request, int $id=null)
+    public function update(DepartmentRequest $request, int $id=null) : JsonResponse
     {
         $this->service->update(
             $request->input('department'),
@@ -67,7 +67,7 @@ class DepartmentsController
      * @param int $id
      * @return JsonResponse
      */
-    public function delete(int $id)
+    public function delete(int $id) : JsonResponse
     {
         $this->service->delete($id);
         return new JsonResponse(true);

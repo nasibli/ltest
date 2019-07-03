@@ -1,9 +1,7 @@
 <?php
 
 Route::get('/', 'AppController@index')
-    ->name('app')
-    ->middleware('auth');
+    ->name('app');
 
 Route::get('/login', 'AppController@login')
-    ->name('login')
-    ->middleware('authorized');
+    ->name('login');
