@@ -3,6 +3,7 @@
 /public
 /public/images
 /public/logos
+/resources/logos
 !/public/index.php
 !/public/favicon.php
 /storage/*.key

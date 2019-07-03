@@ -50,6 +50,7 @@
     "prefer-stable": true,
     "scripts": {
         "logos": [
+            "rm -f public/logos",
             "ln -rsf resources/logos public/logos"
         ],
         "post-autoload-dump": [
