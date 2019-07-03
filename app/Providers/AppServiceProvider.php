@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('App\Services\DepartmentsService', function ($app){
+        $this->app->singleton('App\Services\DepartmentsService', function ($app) {
             return new \App\Services\DepartmentsService(
                 $app->get('App\Repositories\DepartmentRepository'),
                 $app->get('App\Repositories\UserDepartmentRepository'),
@@ -34,13 +34,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Новый валидатор для валидация массива целых чисел
-        \Illuminate\Support\Facades\Validator::extend('arrayint', function($attribute, $param, $parameters)
-        {
-            foreach($param as $value) {
-                if(!is_int($value)) return false;
-            }
+        \Illuminate\Support\Facades\Validator::extend(
+            'arrayint',
+            function ($attribute, $param, $parameters) {
+                foreach ($param as $value) {
+                    if (!is_int($value)) {
+                        return false;
+                    }
+                }
 
-            return true;
-        }, 'Must be array of integer values');
+                return true;
+            },
+            'Must be array of integer values'
+        );
     }
 }

@@ -4,9 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Closure;
-
 
 class JsonParse
 {

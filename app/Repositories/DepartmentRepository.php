@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nasibli
- * Date: 02.07.19
- * Time: 18:10
- */
 
 namespace App\Repositories;
+
 use App\Models\Department;
 
 class DepartmentRepository

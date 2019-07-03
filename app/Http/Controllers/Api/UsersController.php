@@ -6,11 +6,14 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Http\Requests\Api\UserRequest;
+use App\Models\User;
 
 class UsersController
 {
 
-    /** @var UserRepository */
+    /**
+     * @var UserRepository
+     */
     private $repository;
 
     public function __construct(UserRepository $userRepository)
@@ -37,7 +40,7 @@ class UsersController
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return User
      */
     public function get(int $id)
     {

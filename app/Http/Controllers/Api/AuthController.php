@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Auth\AuthManager;
-
 use App\Repositories\UserRepository;
 use App\Http\Requests\Api\LoginRequest;
 
@@ -26,7 +25,7 @@ class AuthController
      * @param UserRepository $userRepository
      * @return JsonResponse
      */
-    public function login (LoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
         return new JsonResponse($this->auth->guard('web')->attempt($credentials));
@@ -34,10 +33,9 @@ class AuthController
 
     /**
      * Выход текущего пользователя из системы
-     * @param Request $request
-     * @return mixed
+     * @return bool
      */
-    public function logout(Request $request)
+    public function logout()
     {
         $this->auth->guard()->logout();
         return  new JsonResponse(true);

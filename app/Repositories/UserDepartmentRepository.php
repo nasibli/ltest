@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+
 use App\Models\UserDepartment;
 
 class UserDepartmentRepository
@@ -12,7 +13,7 @@ class UserDepartmentRepository
      * @param int $departmentId
      * @return array|null
      */
-    public function getByDepartment (int $departmentId)
+    public function getByDepartment(int $departmentId)
     {
         return UserDepartment::query()
             ->where('department_id', $departmentId)

@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use App\Repositories\{DepartmentRepository, UserDepartmentRepository};
 use App\Models\Department;
 
@@ -80,9 +79,12 @@ class DepartmentsService
             $id = $department->id;
         }
 
-        $existingUsers = array_map(function($value) {
-            return $value['user_id'];
-        },$this->userDepartmentRepository->getByDepartment($id)->toArray());
+        $existingUsers = array_map(
+            function ($value) {
+                return $value['user_id'];
+            },
+            $this->userDepartmentRepository->getByDepartment($id)->toArray()
+        );
 
         $usersDelete = array_diff($existingUsers, $users);
         if ($usersDelete) {

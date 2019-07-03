@@ -52,11 +52,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-
         Route::domain('api.ltest.local')
             ->middleware('web')
             ->namespace($this->namespace . '\Api')
             ->group(base_path('routes/api.php'));
-
     }
 }
