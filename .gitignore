@@ -1,6 +1,8 @@
 /.idea
 /node_modules
 /public
+/public/images
+/public/logos
 !/public/index.php
 !/public/favicon.php
 /storage/*.key

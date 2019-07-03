@@ -8,7 +8,7 @@ Vue.use(Vuetable);
 import AppUsers from './components/user/users.vue';
 import AppUserForm from './components/user/user.vue';
 import AppDepartments from './components/department/departments.vue';
-import AppDepartmentForm from './components/department/department-form.vue';
+import AppDepartmentForm from './components/department/department.vue';
 import authApi from './api/auth-api.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -44,7 +44,12 @@ const routes = [
     {
         path: '/department/:id',
         component: AppDepartmentForm,
-        name: 'department'
+        name: 'departments.edit'
+    },
+    {
+        path: '/department/:id',
+        component: AppDepartmentForm,
+        name: 'departments.create'
     }
 ];
 

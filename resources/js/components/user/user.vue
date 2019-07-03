@@ -71,9 +71,6 @@
                         if (resp.data === true) {
                             this.$router.push({name: 'users'});
                         }
-                        if(resp.data.errors) {
-                            this.errors = resp.data.errors;
-                        }
                     })
                     .catch((resp)=>{
                         if(resp.response.data.errors) {

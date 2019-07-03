@@ -32,11 +32,24 @@ class CreateTables extends Migration
         Schema::create('user_departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->default(0);
-            $table->foreign('user_id')->references('id')->on('users');
+
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
             $table->bigInteger('department_id')->unsigned()->default(0);
-            $table->foreign('department_id')->references('id')->on('departments');
+
+            $table
+                ->foreign('department_id')
+                ->references('id')
+                ->on('departments')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
+
     }
 
     /**

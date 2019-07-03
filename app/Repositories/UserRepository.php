@@ -42,7 +42,18 @@ class UserRepository
     public function getPaginated(int $perPage) : ?object
     {
         return User::where('id', '>=', 1)
+            ->orderBy('updated_at', 'DESC')
             ->paginate($perPage);
+    }
+
+    /**
+     * Список всех пользователей
+     * @return mixed
+     */
+    public function getAll()
+    {
+        return User::select(['id', 'surname', 'name', 'email'])
+            ->get();
     }
 
     /**

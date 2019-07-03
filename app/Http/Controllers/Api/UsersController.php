@@ -19,13 +19,18 @@ class UsersController
     }
 
     /**
-     * Спиок пользователей с постраничным выводом
+     * Список всех пользователей или постраничный вывод
      *
-     * @return null|object
+     * @param Request $request
+     * @return array|object
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->repository->getPaginated(10);
+        if ($request->has('per_page')) {
+            return $this->repository->getPaginated($request->input('per_page'));
+        } else {
+            return $this->repository->getAll();
+        }
     }
 
     /**

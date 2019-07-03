@@ -228,4 +228,6 @@ return [
 
     ],
 
+    'logo_path' => env('LOGO_DIR', 'resources/logos'),
+
 ];

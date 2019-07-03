@@ -9,6 +9,7 @@
             <vuetable ref="vuetable"
                       v-bind:api-url="endpoint"
                       :fields="fields"
+                      :per-page="6"
                       pagination-path=""
                       @vuetable:pagination-data="onPaginationData">
 
